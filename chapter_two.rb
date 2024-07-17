@@ -26,20 +26,24 @@ class LinkedList
   end
 
   def pop_last
+    return nil if empty?
+
     to_return = @last
     current = @head
     (length - 2).times { current = current.next }
     current.next = nil
     @last = current
     @length -= 1
-    to_return
+    to_return.value
   end
 
   def pop_first
+    return nil if empty?
+
     to_return = @head
     @head = @head.next
     @length -= 1
-    to_return
+    to_return.value
   end
 
   def insert(value, index)
@@ -85,6 +89,10 @@ class LinkedList
     current = @head
     index.times { current = current.next }
     current.value
+  end
+
+  def empty?
+    @length.zero?
   end
 end
 

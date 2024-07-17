@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require_relative 'chapter_one'
 require_relative 'chapter_two'
+require_relative 'chapter_three'
 
 class AlgorithmsTest < Minitest::Test
   def test_binary_search
@@ -89,5 +90,17 @@ class AlgorithmsTest < Minitest::Test
     assert_equal(1, linked_list[0])
     assert_equal(2, linked_list[1])
     assert_equal(3, linked_list[2])
+  end
+
+  def test_stack
+    stack = Stack.new(1)
+    stack.push(2)
+    stack.push(3)
+    assert_equal(1, stack.peek)
+    assert_equal(3, stack.pop)
+    assert_equal(2, stack.pop)
+    assert_equal(1, stack.pop)
+    assert_equal(true, stack.empty?)
+    assert_nil(stack.pop)
   end
 end
