@@ -8,7 +8,6 @@
 #     knapsack(items, max_weight - item[:weight]) + item[:value]
 #   end
 # end
-
 def knapsack(items, max_weight)
   dp = [0] * (max_weight + 1)
 
@@ -21,27 +20,27 @@ def knapsack(items, max_weight)
   dp.max
 end
 
-to_steal = [
-  { weight: 1, value: 1500 },
-  { weight: 3, value: 2000 },
-  { weight: 4, value: 3000 },
-  { weight: 1, value: 2000 },
-  { weight: 1, value: 1000 }
-]
-
-to_camp = [
-  { weight: 3, value: 10 },
-  { weight: 1, value: 3 },
-  { weight: 2, value: 9 },
-  { weight: 2, value: 5 },
-  { weight: 1, value: 6 }
-]
-
-items = [
-  { weight: 2, value: 3 },
-  { weight: 1, value: 2 }
-]
-
-puts knapsack(to_steal, 4) # 4500
-puts knapsack(to_camp, 6) # 25
-puts knapsack(items, 3) # 5
+# to_steal = [
+#   { weight: 1, value: 1500 },
+#   { weight: 3, value: 2000 },
+#   { weight: 4, value: 3000 },
+#   { weight: 1, value: 2000 },
+#   { weight: 1, value: 1000 }
+# ]
+#
+# to_camp = [
+#   { weight: 3, value: 10 },
+#   { weight: 1, value: 3 },
+#   { weight: 2, value: 9 },
+#   { weight: 2, value: 5 },
+#   { weight: 1, value: 6 }
+# ]
+#
+# items = [
+#   { weight: 2, value: 3 },
+#   { weight: 1, value: 2 }
+# ]
+#
+# puts knapsack(to_steal, 4) # 4500
+# puts knapsack(to_camp, 6) # 25
+# puts knapsack(items, 3) # 5

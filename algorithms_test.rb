@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require_relative 'chapter_one'
 require_relative 'chapter_two'
 require_relative 'chapter_three'
+require_relative 'chapter_nine'
 
 class AlgorithmsTest < Minitest::Test
   def test_binary_search
@@ -102,5 +103,32 @@ class AlgorithmsTest < Minitest::Test
     assert_equal(1, stack.pop)
     assert_equal(true, stack.empty?)
     assert_nil(stack.pop)
+  end
+
+  def test_knapsack
+    to_steal = [
+      { weight: 1, value: 1500 },
+      { weight: 3, value: 2000 },
+      { weight: 4, value: 3000 },
+      { weight: 1, value: 2000 },
+      { weight: 1, value: 1000 }
+    ]
+
+    to_camp = [
+      { weight: 3, value: 10 },
+      { weight: 1, value: 3 },
+      { weight: 2, value: 9 },
+      { weight: 2, value: 5 },
+      { weight: 1, value: 6 }
+    ]
+
+    items = [
+      { weight: 2, value: 3 },
+      { weight: 1, value: 2 }
+    ]
+
+    assert_equal(4500, knapsack(to_steal, 4))
+    assert_equal(25, knapsack(to_camp, 6))
+    assert_equal(5, knapsack(items, 3))
   end
 end

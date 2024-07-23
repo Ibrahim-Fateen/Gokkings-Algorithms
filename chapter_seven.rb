@@ -1,7 +1,7 @@
 def dijkstra(graph:, start:)
   costs = graph[start].dup
   parents = {}
-  processed = { start => true }
+  processed = Set.new(start)
 
   infinity = Float::INFINITY
 
@@ -10,7 +10,7 @@ def dijkstra(graph:, start:)
     lowest_cost = infinity
     lowest_cost_node = nil
     costs.each do |node, cost|
-      if cost < lowest_cost && !processed[node]
+      if cost < lowest_cost && !processed.include?(node)
         lowest_cost = cost
         lowest_cost_node = node
       end
@@ -23,7 +23,7 @@ def dijkstra(graph:, start:)
     cost = costs[node]
     neighbors = graph[node]
     if neighbors.nil?
-      processed[node] = true
+      processed.add(node)
       node = find_lowest_cost_node.call(costs)
       next
     end
@@ -35,7 +35,7 @@ def dijkstra(graph:, start:)
         parents[neighbor] = node
       end
     end
-    processed[node] = true
+    processed.add(node)
     node = find_lowest_cost_node.call(costs)
   end
 
